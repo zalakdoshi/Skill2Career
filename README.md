@@ -216,10 +216,10 @@ Pull requests are welcome! For major changes, please open an issue first.
 
 ## 👩‍💻 Team
 
-| Name | Role | GitHub |
-|---|---|---|
-| **Zalak Doshi** | Full Stack Developer — Backend, AI Integration, Database Design | [@zalakdoshi](https://github.com/zalakdoshi) |
-| **Twisha Patel** | Full Stack Developer — Frontend, UI/UX, Recommendation Engine | — |
+| Name | GitHub |
+|---|---|
+| **Zalak Doshi** | [@zalakdoshi](https://github.com/zalakdoshi) |
+| **Twisha Patel** | — |
 
 > B.Tech — Computer Engineering | Semester 6 | Academic Year 2025–26
 
@@ -232,5 +232,5 @@ This project is licensed under the MIT License.
 ---
 
 <div align="center">
-Made with ❤️ by <b>Zalak Doshi</b> & <b>Twisha Patel</b> | Computer Engineering | 2025–26
+Made with ❤️ by <b>Zalak Doshi</b> & <b>Twisha Patel</b> | 2025–26
 </div>
