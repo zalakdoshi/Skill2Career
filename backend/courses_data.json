@@ -1,0 +1,712 @@
+{
+    "Data Structures & Algorithms": [
+        {
+            "title": "Mastering Data Structures & Algorithms using C and C++",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/datastructurescncpp/",
+            "type": "paid"
+        },
+        {
+            "title": "Algorithms Specialization",
+            "platform": "Coursera",
+            "url": "https://www.coursera.org/specializations/algorithms",
+            "type": "paid"
+        },
+        {
+            "title": "Data Structures and Algorithms",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=8hly31xKli0",
+            "type": "free"
+        },
+        {
+            "title": "Strivers A2Z DSA Course",
+            "platform": "YouTube",
+            "url": "https://www.youtube.com/playlist?list=PLgUwDviBIf0oF6QL8m22w1hIDC1vJ_BHz",
+            "type": "free"
+        }
+    ],
+    "Python": [
+        {
+            "title": "Python for Everybody Specialization",
+            "platform": "Coursera",
+            "url": "https://www.coursera.org/specializations/python",
+            "type": "free"
+        },
+        {
+            "title": "Complete Python Developer",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/complete-python-developer-zero-to-mastery/",
+            "type": "paid"
+        },
+        {
+            "title": "Python Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=rfscVS0vtbw",
+            "type": "free"
+        }
+    ],
+    "JavaScript": [
+        {
+            "title": "The Complete JavaScript Course",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/the-complete-javascript-course/",
+            "type": "paid"
+        },
+        {
+            "title": "JavaScript Algorithms and Data Structures",
+            "platform": "freeCodeCamp",
+            "url": "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/",
+            "type": "free"
+        },
+        {
+            "title": "JavaScript Full Course",
+            "platform": "YouTube",
+            "url": "https://www.youtube.com/watch?v=PkZNo7MFNFg",
+            "type": "free"
+        }
+    ],
+    "React": [
+        {
+            "title": "React - The Complete Guide",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/react-the-complete-guide-incl-redux/",
+            "type": "paid"
+        },
+        {
+            "title": "Full Stack Open - React",
+            "platform": "University of Helsinki",
+            "url": "https://fullstackopen.com/en/",
+            "type": "free"
+        },
+        {
+            "title": "React Full Course for Beginners",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=bMknfKXIFA8",
+            "type": "free"
+        }
+    ],
+    "Node.js": [
+        {
+            "title": "The Complete Node.js Developer Course",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/the-complete-nodejs-developer-course-2/",
+            "type": "paid"
+        },
+        {
+            "title": "Server-side Development with NodeJS, Express and MongoDB",
+            "platform": "Coursera",
+            "url": "https://www.coursera.org/learn/server-side-nodejs",
+            "type": "paid"
+        },
+        {
+            "title": "Node.js Full Course for Beginners",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=Oe421EPjeBE",
+            "type": "free"
+        }
+    ],
+    "Machine Learning": [
+        {
+            "title": "Machine Learning by Andrew Ng",
+            "platform": "Coursera",
+            "url": "https://www.coursera.org/learn/machine-learning",
+            "type": "free"
+        },
+        {
+            "title": "Machine Learning A-Z",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/machinelearning/",
+            "type": "paid"
+        },
+        {
+            "title": "Machine Learning Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=NWONeJKn6kc",
+            "type": "free"
+        }
+    ],
+    "Deep Learning": [
+        {
+            "title": "Deep Learning Specialization",
+            "platform": "Coursera",
+            "url": "https://www.coursera.org/specializations/deep-learning",
+            "type": "paid"
+        },
+        {
+            "title": "PyTorch for Deep Learning",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=V_xro1bcAuQ",
+            "type": "free"
+        },
+        {
+            "title": "Deep Learning A-Z",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/deeplearning/",
+            "type": "paid"
+        }
+    ],
+    "SQL": [
+        {
+            "title": "The Complete SQL Bootcamp",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/the-complete-sql-bootcamp/",
+            "type": "paid"
+        },
+        {
+            "title": "SQL for Data Science",
+            "platform": "Coursera",
+            "url": "https://www.coursera.org/learn/sql-for-data-science",
+            "type": "free"
+        },
+        {
+            "title": "SQL Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=HXV3zeQKqGY",
+            "type": "free"
+        }
+    ],
+    "MongoDB": [
+        {
+            "title": "MongoDB - The Complete Developer's Guide",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/mongodb-the-complete-developers-guide/",
+            "type": "paid"
+        },
+        {
+            "title": "MongoDB University Free Courses",
+            "platform": "MongoDB University",
+            "url": "https://university.mongodb.com/",
+            "type": "free"
+        }
+    ],
+    "AWS": [
+        {
+            "title": "AWS Certified Solutions Architect",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/",
+            "type": "paid"
+        },
+        {
+            "title": "AWS Cloud Practitioner Essentials",
+            "platform": "Coursera",
+            "url": "https://www.coursera.org/learn/aws-cloud-practitioner-essentials",
+            "type": "free"
+        },
+        {
+            "title": "AWS Certified Cloud Practitioner",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=SOTamWNgDKc",
+            "type": "free"
+        }
+    ],
+    "Docker": [
+        {
+            "title": "Docker and Kubernetes: The Complete Guide",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/docker-and-kubernetes-the-complete-guide/",
+            "type": "paid"
+        },
+        {
+            "title": "Docker Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=fqMOX6JJhGo",
+            "type": "free"
+        }
+    ],
+    "Kubernetes": [
+        {
+            "title": "Kubernetes for the Absolute Beginners",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/learn-kubernetes/",
+            "type": "paid"
+        },
+        {
+            "title": "Kubernetes Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=X48VuDVv0do",
+            "type": "free"
+        }
+    ],
+    "Java": [
+        {
+            "title": "Java Programming and Software Engineering Fundamentals",
+            "platform": "Coursera",
+            "url": "https://www.coursera.org/specializations/java-programming",
+            "type": "paid"
+        },
+        {
+            "title": "Java Programming Masterclass",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/java-the-complete-java-developer-course/",
+            "type": "paid"
+        },
+        {
+            "title": "Java Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=grEKMHGYyns",
+            "type": "free"
+        }
+    ],
+    "C++": [
+        {
+            "title": "Beginning C++ Programming",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/beginning-c-plus-plus-programming/",
+            "type": "paid"
+        },
+        {
+            "title": "C++ Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=vLnPwxZdW4Y",
+            "type": "free"
+        }
+    ],
+    "TypeScript": [
+        {
+            "title": "Understanding TypeScript",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/understanding-typescript/",
+            "type": "paid"
+        },
+        {
+            "title": "TypeScript Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=30LWjhZzg50",
+            "type": "free"
+        }
+    ],
+    "Angular": [
+        {
+            "title": "Angular - The Complete Guide",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/the-complete-guide-to-angular-2/",
+            "type": "paid"
+        },
+        {
+            "title": "Angular Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=3qBXWUpoPHo",
+            "type": "free"
+        }
+    ],
+    "Vue.js": [
+        {
+            "title": "Vue - The Complete Guide",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/vuejs-2-the-complete-guide/",
+            "type": "paid"
+        },
+        {
+            "title": "Vue.js Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=FXpIoQ_rT_c",
+            "type": "free"
+        }
+    ],
+    "Django": [
+        {
+            "title": "Python Django - The Practical Guide",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/python-django-the-practical-guide/",
+            "type": "paid"
+        },
+        {
+            "title": "Django Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=F5mRW0jo-U4",
+            "type": "free"
+        }
+    ],
+    "Flask": [
+        {
+            "title": "REST APIs with Flask and Python",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/rest-api-flask-and-python/",
+            "type": "paid"
+        },
+        {
+            "title": "Flask Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=Z1RJmh_OqeA",
+            "type": "free"
+        }
+    ],
+    "Spring Boot": [
+        {
+            "title": "Spring & Spring Boot for Beginners",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/spring-boot-for-beginners/",
+            "type": "paid"
+        },
+        {
+            "title": "Spring Boot Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=9SGDpanrc8U",
+            "type": "free"
+        }
+    ],
+    "TensorFlow": [
+        {
+            "title": "TensorFlow Developer Professional Certificate",
+            "platform": "Coursera",
+            "url": "https://www.coursera.org/professional-certificates/tensorflow-in-practice",
+            "type": "paid"
+        },
+        {
+            "title": "TensorFlow Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=tPYj3fFJGjk",
+            "type": "free"
+        }
+    ],
+    "NLP": [
+        {
+            "title": "Natural Language Processing Specialization",
+            "platform": "Coursera",
+            "url": "https://www.coursera.org/specializations/natural-language-processing",
+            "type": "paid"
+        },
+        {
+            "title": "NLP Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=dIUTsFT2MeQ",
+            "type": "free"
+        }
+    ],
+    "Computer Vision": [
+        {
+            "title": "Deep Learning for Computer Vision",
+            "platform": "Coursera",
+            "url": "https://www.coursera.org/learn/convolutional-neural-networks",
+            "type": "paid"
+        },
+        {
+            "title": "OpenCV Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o",
+            "type": "free"
+        }
+    ],
+    "Data Analysis": [
+        {
+            "title": "Google Data Analytics Professional Certificate",
+            "platform": "Coursera",
+            "url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+            "type": "paid"
+        },
+        {
+            "title": "Data Analysis with Python",
+            "platform": "freeCodeCamp",
+            "url": "https://www.freecodecamp.org/learn/data-analysis-with-python/",
+            "type": "free"
+        }
+    ],
+    "Power BI": [
+        {
+            "title": "Microsoft Power BI Desktop for Business Intelligence",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/microsoft-power-bi-up-running-with-power-bi-desktop/",
+            "type": "paid"
+        },
+        {
+            "title": "Power BI Full Course",
+            "platform": "YouTube",
+            "url": "https://www.youtube.com/watch?v=AGrl-H87pRU",
+            "type": "free"
+        }
+    ],
+    "Tableau": [
+        {
+            "title": "Tableau A-Z: Hands-On Tableau Training",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/tableau10/",
+            "type": "paid"
+        },
+        {
+            "title": "Tableau Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=aHaOIvR00So",
+            "type": "free"
+        }
+    ],
+    "Git": [
+        {
+            "title": "Git Complete: The Definitive Guide",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/git-complete/",
+            "type": "paid"
+        },
+        {
+            "title": "Git and GitHub for Beginners",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=RGOj5yH7evk",
+            "type": "free"
+        }
+    ],
+    "Linux": [
+        {
+            "title": "Linux Mastery",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/linux-mastery/",
+            "type": "paid"
+        },
+        {
+            "title": "Linux Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=sWbUDq4S6Y8",
+            "type": "free"
+        }
+    ],
+    "Cybersecurity": [
+        {
+            "title": "Google Cybersecurity Professional Certificate",
+            "platform": "Coursera",
+            "url": "https://www.coursera.org/professional-certificates/google-cybersecurity",
+            "type": "paid"
+        },
+        {
+            "title": "Cybersecurity Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=U_P23SqJaDc",
+            "type": "free"
+        }
+    ],
+    "Ethical Hacking": [
+        {
+            "title": "Learn Ethical Hacking From Scratch",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/learn-ethical-hacking-from-scratch/",
+            "type": "paid"
+        },
+        {
+            "title": "Ethical Hacking Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=3Kq1MIfTWCE",
+            "type": "free"
+        }
+    ],
+    "DevOps": [
+        {
+            "title": "DevOps Beginners to Advanced",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/decodingdevops/",
+            "type": "paid"
+        },
+        {
+            "title": "DevOps Engineering Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=j5Zsa_eOXeY",
+            "type": "free"
+        }
+    ],
+    "CI/CD": [
+        {
+            "title": "Jenkins, From Zero To Hero",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/jenkins-from-zero-to-hero/",
+            "type": "paid"
+        },
+        {
+            "title": "GitHub Actions Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=R8_veQiYBjI",
+            "type": "free"
+        }
+    ],
+    "System Design": [
+        {
+            "title": "Grokking Modern System Design",
+            "platform": "Educative",
+            "url": "https://www.educative.io/courses/grokking-modern-system-design-interview-for-engineers-managers",
+            "type": "paid"
+        },
+        {
+            "title": "System Design Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=MbjObHmDbZo",
+            "type": "free"
+        }
+    ],
+    "R Programming": [
+        {
+            "title": "R Programming",
+            "platform": "Coursera",
+            "url": "https://www.coursera.org/learn/r-programming",
+            "type": "free"
+        },
+        {
+            "title": "R Programming Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=_V8eKsto3Ug",
+            "type": "free"
+        }
+    ],
+    "Rust": [
+        {
+            "title": "The Rust Programming Language",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/rust-lang/",
+            "type": "paid"
+        },
+        {
+            "title": "Rust Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=BpPEoZW5IiY",
+            "type": "free"
+        }
+    ],
+    "Go": [
+        {
+            "title": "Go: The Complete Developer's Guide",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/go-the-complete-developers-guide/",
+            "type": "paid"
+        },
+        {
+            "title": "Go Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=un6ZyFkqFKo",
+            "type": "free"
+        }
+    ],
+    "React Native": [
+        {
+            "title": "React Native - The Practical Guide",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/react-native-the-practical-guide/",
+            "type": "paid"
+        },
+        {
+            "title": "React Native Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=VozPNrt-LfE",
+            "type": "free"
+        }
+    ],
+    "Flutter": [
+        {
+            "title": "Flutter & Dart - The Complete Guide",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps/",
+            "type": "paid"
+        },
+        {
+            "title": "Flutter Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=VPvVD8t02U8",
+            "type": "free"
+        }
+    ],
+    "Blockchain": [
+        {
+            "title": "Blockchain Specialization",
+            "platform": "Coursera",
+            "url": "https://www.coursera.org/specializations/blockchain",
+            "type": "paid"
+        },
+        {
+            "title": "Blockchain Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=gyMwXuJrbJQ",
+            "type": "free"
+        }
+    ],
+    "PostgreSQL": [
+        {
+            "title": "The Complete Python/PostgreSQL Course",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/complete-python-postgresql-database-course/",
+            "type": "paid"
+        },
+        {
+            "title": "PostgreSQL Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=qw--VYLpxG4",
+            "type": "free"
+        }
+    ],
+    "Redis": [
+        {
+            "title": "Redis: The Complete Developer's Guide",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/redis-the-complete-developers-guide-p/",
+            "type": "paid"
+        },
+        {
+            "title": "Redis Crash Course",
+            "platform": "YouTube",
+            "url": "https://www.youtube.com/watch?v=jgpVdJB2sKQ",
+            "type": "free"
+        }
+    ],
+    "GraphQL": [
+        {
+            "title": "GraphQL with React: The Complete Developers Guide",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/graphql-with-react-course/",
+            "type": "paid"
+        },
+        {
+            "title": "GraphQL Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=ed8SzALpx1Q",
+            "type": "free"
+        }
+    ],
+    "HTML/CSS": [
+        {
+            "title": "Build Responsive Real-World Websites with HTML and CSS",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/design-and-develop-a-killer-website-with-html5-and-css3/",
+            "type": "paid"
+        },
+        {
+            "title": "Responsive Web Design",
+            "platform": "freeCodeCamp",
+            "url": "https://www.freecodecamp.org/learn/2022/responsive-web-design/",
+            "type": "free"
+        }
+    ],
+    "Pandas": [
+        {
+            "title": "Data Analysis with Pandas and Python",
+            "platform": "Udemy",
+            "url": "https://www.udemy.com/course/data-analysis-with-pandas/",
+            "type": "paid"
+        },
+        {
+            "title": "Pandas Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=vmEHCJofslg",
+            "type": "free"
+        }
+    ],
+    "Scikit-learn": [
+        {
+            "title": "Machine Learning with Scikit-Learn",
+            "platform": "Coursera",
+            "url": "https://www.coursera.org/learn/machine-learning-with-python",
+            "type": "free"
+        },
+        {
+            "title": "Scikit-Learn Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=pqNCD_5r0IU",
+            "type": "free"
+        }
+    ],
+    "Networking": [
+        {
+            "title": "The Bits and Bytes of Computer Networking",
+            "platform": "Coursera",
+            "url": "https://www.coursera.org/learn/computer-networking",
+            "type": "free"
+        },
+        {
+            "title": "Computer Networking Full Course",
+            "platform": "freeCodeCamp",
+            "url": "https://www.youtube.com/watch?v=qiQR5rTSshw",
+            "type": "free"
+        }
+    ]
+}

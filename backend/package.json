@@ -1,0 +1,9 @@
+{
+  "name": "skill2career-backend",
+  "version": "1.0.0",
+  "description": "Skill2Career Backend API",
+  "private": true,
+  "scripts": {
+    "start": "python app.py"
+  }
+}
