@@ -1,32 +1,29 @@
 import os
 from config import Config
 
-# Try to import Google Generative AI
-try:
-    import google.generativeai as genai
-    GENAI_AVAILABLE = True
-except ImportError:
-    GENAI_AVAILABLE = False
+# Lazy-load genai — importing it at module level causes slow startup
+# because the package does network-like initialization on import.
+GENAI_AVAILABLE = None  # None = not yet checked
+
+def _get_genai():
+    global GENAI_AVAILABLE
+    if GENAI_AVAILABLE is None:
+        try:
+            import google.generativeai as genai  # noqa: F401
+            GENAI_AVAILABLE = True
+        except ImportError:
+            GENAI_AVAILABLE = False
+    if GENAI_AVAILABLE:
+        import google.generativeai as genai
+        return genai
+    return None
 
 class AIMentor:
     def __init__(self):
         self.api_key = Config.GEMINI_API_KEY
-        self.model = None
-        
-        if GENAI_AVAILABLE and self.api_key:
-            try:
-                genai.configure(api_key=self.api_key)
-                # Use gemini-2.0-flash for fast responses
-                self.model = genai.GenerativeModel('gemini-2.0-flash')
-                print("[OK] Gemini AI initialized successfully")
-            except Exception as e:
-                print(f"[WARNING] Failed to initialize Gemini: {e}")
-                self.model = None
-        else:
-            if not GENAI_AVAILABLE:
-                print("[WARNING] google-generativeai package not installed")
-            if not self.api_key:
-                print("[WARNING] No Gemini API key configured")
+        self._model = None
+        self._initialized = False
+        print("[OK] AIMentor ready (Gemini will be loaded on first chat request)")
     
     def get_response(self, message, profile_context=None):
         """Get AI response for any query"""
@@ -58,10 +55,21 @@ Student Profile:
         else:
             full_prompt = f"{system_prompt}\n\nStudent Question: {message}"
         
-        # Try AI response
-        if self.model:
+        # Try AI response — lazy-initialize Gemini on first call
+        if not self._initialized:
+            genai = _get_genai()
+            if genai and self.api_key:
+                try:
+                    genai.configure(api_key=self.api_key)
+                    self._model = genai.GenerativeModel('gemini-2.0-flash')
+                    print("[OK] Gemini AI initialized")
+                except Exception as e:
+                    print(f"[WARNING] Gemini init failed: {e}")
+            self._initialized = True
+
+        if self._model:
             try:
-                response = self.model.generate_content(full_prompt)
+                response = self._model.generate_content(full_prompt)
                 return {
                     'success': True,
                     'response': response.text,

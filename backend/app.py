@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+﻿from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from datetime import datetime
@@ -301,7 +301,7 @@ def get_skill_analysis():
 # ============ COURSE RECOMMENDATION HELPERS ============
 
 def find_courses_for_skill(skill):
-    """Find courses matching a skill — from MongoDB dynamically"""
+    """Find courses matching a skill â€” from MongoDB dynamically"""
     # Try MongoDB first
     courses = Course.find_by_skill(skill)
     if courses:
@@ -797,7 +797,7 @@ def company_register():
         return jsonify({'error': 'No data provided'}), 400
 
     name = data.get('name', '').strip()
-    email = data.get('email', '').strip()
+    email = data.get('email', '').strip().lower()
     password = data.get('password', '')
     industry = data.get('industry', '').strip()
     website = data.get('website', '').strip()
@@ -808,16 +808,60 @@ def company_register():
     if len(password) < 6:
         return jsonify({'error': 'Password must be at least 6 characters'}), 400
 
-    company = Company.create(name, email, password, industry=industry, website=website, description=description)
-    if company is None:
-        return jsonify({'error': 'Email already registered'}), 409
+    print(f"[REGISTER] Company registration attempt: {email}")
 
-    access_token = create_access_token(identity=company.id)
-    return jsonify({
-        'message': 'Company registered successfully',
-        'user': company.to_dict(),
-        'access_token': access_token
-    }), 201
+    try:
+        import bcrypt as _bcrypt
+        from bson import ObjectId
+        from models import companies_collection, MONGO_CONNECTED, _memory_companies, _company_id_counter
+
+        password_hash = _bcrypt.hashpw(password.encode('utf-8'), _bcrypt.gensalt()).decode('utf-8')
+
+        if MONGO_CONNECTED and companies_collection is not None:
+            # Check duplicate
+            existing = companies_collection.find_one({'email': email})
+            if existing:
+                print(f"[REGISTER] Email already in companies: {email}")
+                return jsonify({'error': 'Email already registered. Please login instead.'}), 409
+            # Insert
+            doc = {
+                'name': name, 'email': email, 'password_hash': password_hash,
+                'industry': industry, 'website': website, 'logo_url': '',
+                'description': description, 'role': 'company',
+                'created_at': datetime.now()
+            }
+            result = companies_collection.insert_one(doc)
+            company_id = str(result.inserted_id)
+            print(f"[REGISTER] Company created in MongoDB: {email} id={company_id}")
+        else:
+            # In-memory
+            import models as _models
+            if any(c['email'] == email for c in _models._memory_companies.values()):
+                return jsonify({'error': 'Email already registered. Please login instead.'}), 409
+            company_id = str(_models._company_id_counter)
+            _models._company_id_counter += 1
+            _models._memory_companies[company_id] = {
+                'id': company_id, 'name': name, 'email': email,
+                'password_hash': password_hash, 'industry': industry,
+                'website': website, 'logo_url': '', 'description': description,
+                'role': 'company', 'created_at': str(datetime.now())
+            }
+            print(f"[REGISTER] Company created in memory: {email}")
+
+        access_token = create_access_token(identity=company_id)
+        return jsonify({
+            'message': 'Company registered successfully',
+            'user': {
+                'id': company_id, 'name': name, 'email': email,
+                'industry': industry, 'website': website,
+                'description': description, 'role': 'company'
+            },
+            'access_token': access_token
+        }), 201
+
+    except Exception as e:
+        print(f"[REGISTER ERROR] {type(e).__name__}: {e}")
+        return jsonify({'error': f'Registration failed: {str(e)}'}), 500
 
 @app.route('/api/company/login', methods=['POST'])
 def company_login():
@@ -994,7 +1038,7 @@ def company_search_candidates():
 @app.route('/api/company/all-candidates', methods=['GET'])
 @company_required
 def company_all_candidates():
-    """Return ALL users with profiles — no skill filter"""
+    """Return ALL users with profiles â€” no skill filter"""
     company_id = get_jwt_identity()
     company_jobs = Job.find_by_company(company_id)
     # Collect all required skills from company jobs
@@ -1009,15 +1053,13 @@ def company_all_candidates():
         if u.get('role') != 'user':
             continue
         profile = Profile.get_by_user_id(u['id'])
-        if not profile:
-            continue
-        p = profile.to_dict()
+        p = profile.to_dict() if profile else {}
         all_student_skills = (p.get('skills', []) + p.get('languages', []) +
                               p.get('frameworks', []) + p.get('databases', []) +
                               p.get('platforms', []))
         student_skills_lower = [s.lower() for s in all_student_skills]
         # Calculate match % based on all company job skills
-        if all_required:
+        if all_required and student_skills_lower:
             matched = [s for s in all_required if s in student_skills_lower]
             match_pct = round((len(matched) / len(all_required)) * 100)
         else:
@@ -1026,7 +1068,7 @@ def company_all_candidates():
             'id': u['id'],
             'name': u['name'],
             'email': u['email'],
-            'branch': p.get('branch', ''),
+            'branch': p.get('branch', 'Not specified'),
             'skills': all_student_skills,
             'match_percentage': match_pct,
             'projects_count': len(p.get('projects', [])),

@@ -1,0 +1,20 @@
+# Vercel Ignore File
+# Ignore large files that are not needed at runtime by the backend
+
+postings.csv
+recommendations.csv
+userskills.csv
+colabdata.csv
+Skill2Career.zip
+.venv
+.git
+node_modules
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

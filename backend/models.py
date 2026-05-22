@@ -1,5 +1,4 @@
 from pymongo import MongoClient
-from pymongo.errors import ConnectionFailure, ServerSelectionTimeoutError
 import bcrypt
 import json
 import os
@@ -7,24 +6,38 @@ from datetime import datetime
 from bson import ObjectId
 from config import Config
 
-# MongoDB connection with error handling
-try:
-    client = MongoClient(Config.MONGO_URI, serverSelectionTimeoutMS=5000)
-    # Test connection
-    client.admin.command('ping')
-    db = client[Config.MONGO_DB_NAME]
-    MONGO_CONNECTED = True
-    print("[OK] MongoDB Atlas connected - Users will be saved to database")
-except (ConnectionFailure, ServerSelectionTimeoutError) as e:
-    print(f"[WARNING] MongoDB connection failed: {e}")
-    print("[WARNING] Users will be stored in memory only (will be lost on restart)")
-    MONGO_CONNECTED = False
-    db = None
+MONGO_CONNECTED = False
+db = None
+client = None
+
+# Only attempt MongoDB connection if a URI is configured.
+# Skipping the connection avoids the Windows DNS SRV lookup hang.
+_mongo_uri = (Config.MONGO_URI or '').strip()
+if _mongo_uri and not _mongo_uri.startswith('#'):
+    try:
+        client = MongoClient(_mongo_uri, serverSelectionTimeoutMS=5000, connectTimeoutMS=5000)
+        client.admin.command('ping')
+        db = client[Config.MONGO_DB_NAME]
+        MONGO_CONNECTED = True
+        print("[OK] MongoDB Atlas connected - Users will be saved to database")
+    except Exception as e:
+        print(f"[WARNING] MongoDB connection failed: {e}")
+        print("[WARNING] Users will be stored in memory only (will be lost on restart)")
+else:
+    print("[INFO] No MONGO_URI set - running in in-memory mode")
+
+
 
 # In-memory storage fallback
 _memory_users = {}
 _memory_profiles = {}
+_memory_companies = {}
+_memory_jobs = {}
+_memory_applications = {}
 _user_id_counter = 1
+_company_id_counter = 1
+_job_id_counter = 1
+_application_id_counter = 1
 
 # Collections (if connected)
 if MONGO_CONNECTED:
@@ -554,31 +567,41 @@ class Company:
 
     @staticmethod
     def create(name, email, password, industry='', website='', logo_url='', description=''):
+        global _company_id_counter
         password_hash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
         if MONGO_CONNECTED:
             try:
-                # Check if email already exists in users or companies
-                if users_collection.find_one({'email': email}):
+                # Check if email already exists in companies (not users)
+                if companies_collection.find_one({'email': email}):
+                    print(f"[DEBUG] Company email already exists: {email}")
                     return None
                 doc = {
-                    'name': name,
-                    'email': email,
-                    'password_hash': password_hash,
-                    'industry': industry,
-                    'website': website,
-                    'logo_url': logo_url,
-                    'description': description,
-                    'role': 'company',
-                    'created_at': datetime.now()
+                    'name': name, 'email': email, 'password_hash': password_hash,
+                    'industry': industry, 'website': website, 'logo_url': logo_url,
+                    'description': description, 'role': 'company', 'created_at': datetime.now()
                 }
                 result = companies_collection.insert_one(doc)
+                print(f"[OK] New company registered: {email}")
                 return Company(id=str(result.inserted_id), name=name, email=email,
                                password_hash=password_hash, industry=industry,
                                website=website, logo_url=logo_url, description=description)
             except Exception as e:
-                print(f"Error creating company: {e}")
+                print(f"[ERROR] Company create exception: {type(e).__name__}: {e}")
                 return None
-        return None
+        else:
+            # In-memory fallback
+            if any(c['email'] == email for c in _memory_companies.values()):
+                return None
+            company_id = str(_company_id_counter)
+            _company_id_counter += 1
+            _memory_companies[company_id] = {
+                'id': company_id, 'name': name, 'email': email,
+                'password_hash': password_hash, 'industry': industry,
+                'website': website, 'logo_url': logo_url, 'description': description,
+                'role': 'company', 'created_at': str(datetime.now())
+            }
+            return Company(id=company_id, name=name, email=email, password_hash=password_hash,
+                           industry=industry, website=website, logo_url=logo_url, description=description)
 
     @staticmethod
     def find_by_email(email):
@@ -591,6 +614,13 @@ class Company:
                     website=doc.get('website', ''), logo_url=doc.get('logo_url', ''),
                     description=doc.get('description', ''), created_at=doc.get('created_at')
                 )
+        else:
+            for c in _memory_companies.values():
+                if c['email'] == email:
+                    return Company(id=c['id'], name=c['name'], email=c['email'],
+                                   password_hash=c['password_hash'], industry=c.get('industry',''),
+                                   website=c.get('website',''), logo_url=c.get('logo_url',''),
+                                   description=c.get('description',''))
         return None
 
     @staticmethod
@@ -607,6 +637,13 @@ class Company:
                     )
             except Exception as e:
                 print(f"Error finding company: {e}")
+        else:
+            if company_id in _memory_companies:
+                c = _memory_companies[company_id]
+                return Company(id=c['id'], name=c['name'], email=c['email'],
+                               password_hash=c['password_hash'], industry=c.get('industry',''),
+                               website=c.get('website',''), logo_url=c.get('logo_url',''),
+                               description=c.get('description',''))
         return None
 
     @staticmethod
@@ -615,15 +652,17 @@ class Company:
         if MONGO_CONNECTED:
             for doc in companies_collection.find():
                 companies.append({
-                    'id': str(doc['_id']),
-                    'name': doc['name'],
-                    'email': doc['email'],
-                    'industry': doc.get('industry', ''),
-                    'website': doc.get('website', ''),
-                    'logo_url': doc.get('logo_url', ''),
-                    'description': doc.get('description', ''),
+                    'id': str(doc['_id']), 'name': doc['name'], 'email': doc['email'],
+                    'industry': doc.get('industry', ''), 'website': doc.get('website', ''),
+                    'logo_url': doc.get('logo_url', ''), 'description': doc.get('description', ''),
                     'created_at': str(doc.get('created_at', ''))
                 })
+        else:
+            for c in _memory_companies.values():
+                companies.append({'id': c['id'], 'name': c['name'], 'email': c['email'],
+                                  'industry': c.get('industry',''), 'website': c.get('website',''),
+                                  'logo_url': c.get('logo_url',''), 'description': c.get('description',''),
+                                  'created_at': c.get('created_at','')})
         return companies
 
     @staticmethod
@@ -643,7 +682,7 @@ class Company:
     def count():
         if MONGO_CONNECTED:
             return companies_collection.count_documents({})
-        return 0
+        return len(_memory_companies)
 
     def check_password(self, password):
         return bcrypt.checkpw(password.encode('utf-8'), self.password_hash.encode('utf-8'))
@@ -761,8 +800,13 @@ class Job:
         jobs = []
         if MONGO_CONNECTED:
             for doc in jobs_collection.find({'status': 'active'}).sort('created_at', -1):
-                # Attach company info
-                company = companies_collection.find_one({'_id': ObjectId(doc['company_id'])})
+                # Attach company info safely
+                company = None
+                try:
+                    if doc.get('company_id'):
+                        company = companies_collection.find_one({'_id': ObjectId(doc['company_id'])})
+                except Exception:
+                    pass
                 company_name = company['name'] if company else 'Unknown'
                 company_industry = company.get('industry', '') if company else ''
                 jobs.append({

@@ -41,7 +41,6 @@ const CompanyCandidates = () => {
   };
 
   const loadMatchedCandidates = async () => {
-    if (matchedCandidates.length > 0) return;
     setMatchLoading(true);
     try {
       const data = await companyService.searchCandidates('');
@@ -343,10 +342,11 @@ const CompanyCandidates = () => {
         {/* ── Job Matches Tab ── */}
         {activeTab === 'matched' && (
           <div>
-            <div className="card" style={{ padding: '1rem 1.5rem', marginBottom: '1rem', background: '#6366f108', border: '1px solid #6366f120' }}>
+            <div className="card" style={{ padding: '1rem 1.5rem', marginBottom: '1rem', background: '#6366f108', border: '1px solid #6366f120', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <p style={{ fontSize: '0.88rem', color: 'var(--slate-600)', margin: 0 }}>
-                🎯 These candidates match the skills required by your posted jobs. Only students <strong>open to opportunities</strong> are shown. You can <strong>invite</strong> them to apply.
+                🎯 These candidates match the skills required by your posted jobs. Only students <strong>open to opportunities</strong> are shown.
               </p>
+              <button onClick={loadMatchedCandidates} style={{ padding: '6px 14px', borderRadius: '8px', border: '1px solid #6366f1', background: 'transparent', color: '#6366f1', cursor: 'pointer', fontSize: '0.8rem', fontWeight: '600', whiteSpace: 'nowrap', marginLeft: '1rem' }}>🔄 Refresh</button>
             </div>
             {matchLoading ? (
               <div style={{ display: 'flex', justifyContent: 'center', padding: '3rem' }}>
