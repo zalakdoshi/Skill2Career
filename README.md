@@ -12,7 +12,7 @@
 [![Gemini AI](https://img.shields.io/badge/Google_Gemini-2.0_Flash-orange?logo=google)](https://ai.google.dev)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
-*B.Tech Mini Project — Computer Engineering | Semester 6 | 2025–26*
+*B.Tech Mini Project —  Semester 6 | 2025–26*
 
 </div>
 
@@ -224,7 +224,7 @@ Pull requests are welcome! For major changes, please open an issue first.
 | **Zalak Doshi** | [@zalakdoshi](https://github.com/zalakdoshi) |
 | **Twisha Patel** | — |
 
-> B.Tech — Computer Engineering | Semester 6 | Academic Year 2025–26
+> B.Tech — Semester 6 | Academic Year 2025–26
 
 ---
 
