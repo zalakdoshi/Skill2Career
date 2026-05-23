@@ -1,3 +1,11 @@
+# 🎯 Skill2Career Frontend
+
+This is the frontend React application for **Skill2Career**.
+
+🚀 **Live Deployment:** [skill2career.vercel.app](https://skill2career.vercel.app)
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

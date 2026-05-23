@@ -4,6 +4,7 @@
 
 ### An AI-Powered Career Guidance & Placement Platform for Engineering Students
 
+[![Vercel](https://img.shields.io/badge/Vercel-Deployed-black?logo=vercel&logoColor=white)](https://skill2career.vercel.app)
 [![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)](https://python.org)
 [![Flask](https://img.shields.io/badge/Flask-3.0-black?logo=flask)](https://flask.palletsprojects.com)
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react)](https://react.dev)
@@ -20,6 +21,8 @@
 ## 📖 About Skill2Career
 
 **Skill2Career** bridges the gap between engineering students and their dream careers. It analyzes your complete technical profile — skills, CGPA, projects, internships — and uses a weighted recommendation engine to map you to the most compatible career roles, while telling you exactly what you need to learn next.
+
+🚀 **Live Demo:** [skill2career.vercel.app](https://skill2career.vercel.app)
 
 ---
 
