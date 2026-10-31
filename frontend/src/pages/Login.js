@@ -3,6 +3,9 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './Auth.css';
 
+const DEMO_EMAIL = 'demo@skill2career.com';
+const DEMO_PASSWORD = 'Demo@123';
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -11,30 +14,37 @@ const Login = () => {
   const navigate = useNavigate();
   const { login, companyLogin } = useAuth();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const doLogin = async (em, pw) => {
     setError('');
     setLoading(true);
-
     try {
-      // Try student/admin login first
-      const data = await login(email, password);
+      const data = await login(em, pw);
       if (data.user && data.user.role === 'admin') {
         navigate('/admin');
       } else {
         navigate('/dashboard');
       }
     } catch (err) {
-      // If student/admin login fails, try company login
       try {
-        await companyLogin(email, password);
+        await companyLogin(em, pw);
         navigate('/company/dashboard');
-      } catch (companyErr) {
+      } catch {
         setError('Invalid email or password');
       }
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    doLogin(email, password);
+  };
+
+  const handleDemoLogin = () => {
+    setEmail(DEMO_EMAIL);
+    setPassword(DEMO_PASSWORD);
+    doLogin(DEMO_EMAIL, DEMO_PASSWORD);
   };
 
   return (
@@ -65,6 +75,23 @@ const Login = () => {
               <span>{error}</span>
             </div>
           )}
+
+          {/* ── One-click Demo Login Banner ── */}
+          <button
+            type="button"
+            className="auth-demo-btn"
+            disabled={loading}
+            onClick={handleDemoLogin}
+          >
+            <span className="auth-demo-icon">🚀</span>
+            <span className="auth-demo-text">
+              <strong>Try Demo Account</strong>
+              <small>One click — no signup needed</small>
+            </span>
+            <span className="auth-demo-arrow">→</span>
+          </button>
+
+          <div className="auth-demo-divider"><span>or sign in manually</span></div>
 
           <form onSubmit={handleSubmit}>
             <div className="auth-field">
